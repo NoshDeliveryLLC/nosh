@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "Nosh Delivery": {
+            "applicationId": "AS4GYcdGqYOvnZ5lBqR2jSq9c47Vr91rGntWhCmH", 
+            "masterKey": "vxveXeShV8ojxzt7xiyTnQL6bo2bJXBt0aOUbbl3"
+        }, 
+        "_default": {
+            "link": "Nosh Delivery"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.4.0"
+    }
+}
