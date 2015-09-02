@@ -49,28 +49,28 @@ class SummaryWaitViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
 //        //NSLog("%@", "-1")
-//        let query = PFQuery(className:"savedData")
-//        //NSLog("%@", "0")
-//        query.fromLocalDatastore()
-//        var object : PFObject = PFObject.new()
-//        var findresult: Bool = false
-//        query.getFirstObjectInBackgroundWithBlock { (newObject:PFObject!, error: NSError!) -> Void in
-//            if error == nil {
-//                // The find succeeded.
-//                // Do something with the found objects
-//                object = newObject
-//                findresult = true
-//            } else {
-//                // Log details of the failure
-//                println("Error: \(error!) \(error!.userInfo!)")
-//            }}
-////        NSLog("%@", 1)
-//        if (findresult) {
-//            self.order = object["order"] as! PFObject
-//            self.card = object["card"] as! STPCard
-//            self.vendorItems = object["vendorItems"] as! [PFObject]
-//            object.unpin()
-//        }
+        let query = PFQuery(className:"savedData")
+        //NSLog("%@", "0")
+        query.fromLocalDatastore()
+        var object : PFObject = PFObject.new()
+        var findresult: Bool = false
+        query.getFirstObjectInBackgroundWithBlock { (newObject:PFObject!, error: NSError!) -> Void in
+            if error == nil {
+                // The find succeeded.
+                // Do something with the found objects
+                object = newObject
+                findresult = true
+            } else {
+                // Log details of the failure
+                println("Error: \(error!) \(error!.userInfo!)")
+            }}
+//        NSLog("%@", 1)
+        if (findresult) {
+            self.order = object["order"] as! PFObject
+            self.card = object["card"] as! STPCard
+            self.vendorItems = object["vendorItems"] as! [PFObject]
+            object.unpin()
+        }
 ////        NSLog("%@", 2)
         delay(3) {
             self.waitDelivery()

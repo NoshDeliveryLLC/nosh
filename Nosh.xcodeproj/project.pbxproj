@@ -117,6 +117,8 @@
 		4C79F6981B45FA9900450DAA /* SummaryWaitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C79F6971B45FA9900450DAA /* SummaryWaitViewController.swift */; };
 		4C79F69A1B45FC2500450DAA /* SummaryWithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C79F6991B45FC2500450DAA /* SummaryWithdrawViewController.swift */; };
 		4C79F69C1B45FC5600450DAA /* SummaryDelivererFoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C79F69B1B45FC5600450DAA /* SummaryDelivererFoundViewController.swift */; };
+		628898A61B96683B00DF6C44 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 628898A51B96683B00DF6C44 /* FBSDKLoginKit.framework */; };
+		628898A81B966A8500DF6C44 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 628898A71B966A8500DF6C44 /* FBSDKCoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -266,6 +268,9 @@
 		4C79F6971B45FA9900450DAA /* SummaryWaitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryWaitViewController.swift; sourceTree = "<group>"; };
 		4C79F6991B45FC2500450DAA /* SummaryWithdrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryWithdrawViewController.swift; sourceTree = "<group>"; };
 		4C79F69B1B45FC5600450DAA /* SummaryDelivererFoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryDelivererFoundViewController.swift; sourceTree = "<group>"; };
+		628898A41B96679900DF6C44 /* Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridge-Header.h"; sourceTree = "<group>"; };
+		628898A51B96683B00DF6C44 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Nosh/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		628898A71B966A8500DF6C44 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,6 +280,7 @@
 			files = (
 				4B1B0E631AC056D700CCE122 /* libstdc++.6.dylib in Frameworks */,
 				4BD05BB21A6BBED700DB62F4 /* SystemConfiguration.framework in Frameworks */,
+				628898A81B966A8500DF6C44 /* FBSDKCoreKit.framework in Frameworks */,
 				4BA163D61AB2070B004BD950 /* QuartzCore.framework in Frameworks */,
 				4BA163D41AB20701004BD950 /* OpenGLES.framework in Frameworks */,
 				4BA163D21AB206F3004BD950 /* libz.dylib in Frameworks */,
@@ -291,6 +297,7 @@
 				4B620D5A1A99FDE20010BF99 /* Social.framework in Frameworks */,
 				4BD05BD21A6BD85700DB62F4 /* Security.framework in Frameworks */,
 				4BD05BB61A6BBEF300DB62F4 /* libsqlite3.dylib in Frameworks */,
+				628898A61B96683B00DF6C44 /* FBSDKLoginKit.framework in Frameworks */,
 				4BD05BB41A6BBEE000DB62F4 /* AudioToolbox.framework in Frameworks */,
 				4BD05BB01A6BBECB00DB62F4 /* Foundation.framework in Frameworks */,
 				4BD05B9C1A6BBD9B00DB62F4 /* Parse.framework in Frameworks */,
@@ -424,6 +431,8 @@
 				4BD05BD51A6BD8E500DB62F4 /* Stripe */,
 				4BD05BD11A6BD85700DB62F4 /* Security.framework */,
 				4BD05BB51A6BBEF300DB62F4 /* libsqlite3.dylib */,
+				628898A71B966A8500DF6C44 /* FBSDKCoreKit.framework */,
+				628898A51B96683B00DF6C44 /* FBSDKLoginKit.framework */,
 				4BD05BB31A6BBEE000DB62F4 /* AudioToolbox.framework */,
 				4BD05BB11A6BBED700DB62F4 /* SystemConfiguration.framework */,
 				4BD05BAF1A6BBECB00DB62F4 /* Foundation.framework */,
@@ -454,6 +463,7 @@
 				4B33A24F1A9CD44A00AD1EF1 /* Util */,
 				4BF361731A99C0E100CBDE6C /* Vendor */,
 				4B18E2811A9E45E000346B8A /* ProfileVC.swift */,
+				628898A41B96679900DF6C44 /* Bridge-Header.h */,
 				4C6968AB1B4A8D2E009DAFB5 /* Main.storyboard */,
 				4BA495181AA9FDA200BDDBD5 /* ChangeStatusVC.swift */,
 				4B5FBCE61AA4D00F00AEC139 /* AddressVC.swift */,
@@ -952,9 +962,11 @@
 					"$(PROJECT_DIR)/parse-library-1.6.1",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/facebook",
+					"$(PROJECT_DIR)/CustomIOSAlertView",
+					"$(PROJECT_DIR)/Nosh",
 				);
 				INFOPLIST_FILE = Nosh/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
@@ -979,9 +991,11 @@
 					"$(PROJECT_DIR)/parse-library-1.6.1",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/facebook",
+					"$(PROJECT_DIR)/CustomIOSAlertView",
+					"$(PROJECT_DIR)/Nosh",
 				);
 				INFOPLIST_FILE = Nosh/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

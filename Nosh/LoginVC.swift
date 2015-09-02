@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
     
     @IBOutlet var txtUsername : TextField!
     @IBOutlet var txtPassword : TextField!
@@ -28,7 +28,14 @@ class LoginVC: UIViewController {
         self.txtPassword.attributedPlaceholder = NSAttributedString(string:"PASSWORD",
             attributes:[NSForegroundColorAttributeName: UIColor(hex:"bcbcbc", alpha:1.0),
                 NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 18)!])
+        
+        var loginButton = FBSDKLoginButton()
+        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
+        loginButton.center = CGPoint(x: 200, y: 500)
+        loginButton.delegate = self
+        self.view.addSubview(loginButton)
     }
+    
     
     override func viewWillAppear(animated:Bool) {
         super.viewWillAppear(animated)
@@ -94,6 +101,21 @@ class LoginVC: UIViewController {
             }
         }
     }
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!)
+    {
+        println(1)
+        if error == nil {
+            println("Login Completed")
+        } else {
+            println(error.localizedDescription)
+        }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        println("User logged out")
+    }
+    
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         view.endEditing(true)
