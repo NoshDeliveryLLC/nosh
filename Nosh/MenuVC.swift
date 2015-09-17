@@ -109,6 +109,12 @@ class MenuVC: UIViewController, UITableViewDataSource, UITableViewDelegate{
             cellIdentifier = "deliveryOrders"
         }
         var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! UITableViewCell
+        if cellIdentifier == "deliveryOrders" {
+            let currentInstallation = PFInstallation.currentInstallation()
+            if currentInstallation.badge != 0 {
+                cell.imageView?.image = UIImage(named: "dot")
+            }
+        }
         return cell
     }
     

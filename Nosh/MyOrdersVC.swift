@@ -37,6 +37,13 @@ class MyOrdersVC: PFQueryTableViewController{
             self.segmentedControl.hidden = true
         } else {
             self.segmentedControl.hidden = false
+            if activeJobs == false {
+                let currentInstallation = PFInstallation.currentInstallation()
+                if currentInstallation.badge != 0 {
+                    currentInstallation.badge = 0
+                    currentInstallation.saveEventually()
+                }
+            }
         }
     }
 
@@ -65,6 +72,7 @@ class MyOrdersVC: PFQueryTableViewController{
         let vendor = object["vendor"] as? PFObject
         if((vendor) != nil){
             cell.title.text = vendor?.valueForKey("name") as? String
+//            cell.title.text = "error"
         } else {
             cell.title.text = ""
         }
@@ -76,6 +84,7 @@ class MyOrdersVC: PFQueryTableViewController{
                 cell.status.textColor = UIColor(hex: "63af00", alpha: 1.0)
             }
             cell.status.text = status?.valueForKey("name") as? String
+//            cell.status.text = "error2"
         } else {
             cell.status.text = ""
         }
@@ -94,6 +103,9 @@ class MyOrdersVC: PFQueryTableViewController{
             cell.accept.hidden = true
             cell.editStatus.hidden = true
         }
+        if (activeJobs) {
+            cell.accept.hidden = true
+        }
         return cell
     }
     
@@ -107,7 +119,8 @@ class MyOrdersVC: PFQueryTableViewController{
             let assignedQuery = PFQuery(className: "Order")
             assignedQuery.whereKey("assignedTo", equalTo: user)
             if activeJobs {
-                query = PFQuery.orQueryWithSubqueries([statusQuery, assignedQuery])
+                query = assignedQuery
+                //query = PFQuery.orQueryWithSubqueries([statusQuery, assignedQuery])
             } else {
                 query = statusQuery
             }
@@ -151,11 +164,14 @@ class MyOrdersVC: PFQueryTableViewController{
         let hitPoint = sender.convertPoint(CGPointZero, toView: self.tableView)
         let hitIndex = self.tableView.indexPathForRowAtPoint(hitPoint)
         if(hitIndex != nil){
+            
             var order = self.objects[hitIndex!.row] as! PFObject
             let orderStatusFrom = order["status"] as? PFObject;
             order["assignedTo"] = PFUser.currentUser()
             order["status"] = PFObject(withoutDataWithClassName: "OrderStatus", objectId: Constant.OrderStatus.IN_DELIVERY)
+            
             self.showActivityIndicatory()
+           
             order.saveInBackgroundWithBlock({
                 (succeeded: Bool, error: NSError!) -> Void in
                 self.hideActivityIndicator()
@@ -164,15 +180,29 @@ class MyOrdersVC: PFQueryTableViewController{
                     statusLog["order"] = order;
                     statusLog["user"] = PFUser.currentUser();
                     statusLog["orderStatusFrom"] = orderStatusFrom;
-                    statusLog["orderStatusTo"] = order["status"];
+                    statusLog["orderStatusTo"]  = PFObject(withoutDataWithClassName: "OrderStatus", objectId: Constant.OrderStatus.IN_DELIVERY)
+
                     statusLog.saveEventually()
                     PFCloud.callFunctionInBackground("sendOrderAcceptedMail", withParameters: ["orderId": order.objectId], block: nil)
+                    
+                    //Send push to customer
+                    // Find devices associated with these users
+                    let pushQuery = PFInstallation.query()
+                    pushQuery.whereKey("user", equalTo: order["user"])
+                    
+                    // Send push notification to query
+                    let push = PFPush()
+                    push.setQuery(pushQuery) // Set our Installation query
+                    push.setMessage("Your order is now in delivery")
+                    push.sendPush(NSErrorPointer())
+            
                     self.tableView.reloadData()
                 } else {
                     self.showError("Failed!", error: error)
                 }
             })
         }
+    self.viewDidLoad()
     }
     
 }

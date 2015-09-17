@@ -129,10 +129,11 @@ class SummaryVC: UITableViewController, PTKViewDelegate{
 //        PFCloud.callFunction("NewOrder", withParameters: ["name": vendor["name"]])
         
         //Temp function because of parse.com cloud bugs. Production version my use parse.com cloud code (project folder/parse)
-        let message = "New delivery job avaliable from " .stringByAppendingString(vendor["name"] as! String)
+        let message = "New delivery job available from " .stringByAppendingString(vendor["name"] as! String)
         let data = [
             "alert" : message,
-            "badge" : "Increment"
+            "badge" : "Increment",
+            "option" : "2"
         ]
         let push = PFPush()
         push.setChannel("Deliverer")

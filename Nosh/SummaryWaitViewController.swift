@@ -29,6 +29,7 @@ class SummaryWaitViewController: UIViewController {
                 self.showError("Order withdrawing error", error: error!)
             }
         })
+        self.performSegueWithIdentifier("goto_map", sender: self)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -140,6 +141,19 @@ class SummaryWaitViewController: UIViewController {
             var svc = navigationController.topViewController as! SummaryWithdrawViewController
             svc.order = self.order
         }
+//        else if (segue.identifier == "goto_map") {
+//            order.deleteInBackgroundWithBlock({
+//                (success: Bool, error: NSError?) -> Void in
+//                if (success) {
+//                    NSLog("", "Order withdraw made")
+//                    // The object has been saved.
+//                    self.performSegueWithIdentifier("goto_map", sender: self)
+//                } else {
+//                    // There was a problem, check error.description
+//                    self.showError("Order withdrawing error", error: error!)
+//                }
+//            })
+//        }
     }
 
     /*

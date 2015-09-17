@@ -15,7 +15,6 @@ class SummaryDelivererFoundViewController: UIViewController {
     var vendorItems: [PFObject]!
     
     @IBAction func callDelivererButton(sender: UIButton) {
-        //TODO: find deliverer and call
         var deliverer: PFObject!
         
         let query = PFQuery(className: "Order")

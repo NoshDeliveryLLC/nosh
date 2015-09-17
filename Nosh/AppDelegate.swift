@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics()])
         Parse.enableLocalDatastore();
         Parse.setApplicationId(Config.Parse.appId, clientKey:Config.Parse.clientId)
+        GMSServices.provideAPIKey("AIzaSyDplreFQyvs_lih-pqcr3vCbi5c9yokv80")
         
         let config = PFConfig.currentConfig()
         if(config != nil && config["stripe"] != nil && config["gms_key"] != nil){
@@ -63,6 +64,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             gotoLogin()
             }
         }
+        
+        // Extract the notification data
+        if let notificationPayload = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? NSDictionary {
+            let option = notificationPayload["option"] as? NSString
+            if option == "2"{
+                let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let initViewController: MyOrdersVC = storyboard.instantiateViewControllerWithIdentifier("MyOrders") as! MyOrdersVC
+                self.window?.rootViewController = initViewController
+            }
+        }
+
         return true
     }
         
@@ -79,6 +91,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let installation = PFInstallation.currentInstallation()
         installation.setDeviceTokenFromData(deviceToken)
         installation.save()
+    }
+    
+    func application(application: UIApplication,  didReceiveRemoteNotification userInfo: [NSObject : AnyObject],  fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        let option = userInfo["option"] as? NSString
+        if option == "2"{
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let initViewController: MyOrdersVC = storyboard.instantiateViewControllerWithIdentifier("MyOrders") as! MyOrdersVC
+            self.window?.rootViewController?.navigationController?.pushViewController(initViewController, animated: true)
+            completionHandler(UIBackgroundFetchResult.NewData)
+        }
+         completionHandler(UIBackgroundFetchResult.NoData)
     }
 
     func applicationWillResignActive(application: UIApplication) {

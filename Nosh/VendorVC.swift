@@ -40,24 +40,23 @@ class VendorVC: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate,
         buttonReload?.titleLabel?.font = UIFont(name: "COCOGOOSE", size: 14)
         buttonReload?.hidden = true
         
-        let config = PFConfig.currentConfig()
-        if(config != nil && config["gms_key"] != nil){
-            self.initVC()
-        } else {
-            self.showActivityIndicatory()
-            PFConfig.getConfigInBackgroundWithBlock{
-                (config: PFConfig!, error: NSError!) -> Void in
-                self.hideActivityIndicator()
-                if(error == nil){
-                    Util.configure(config)
-                    self.initVC()
-                    self.gmaps!.addSubview(self.buttonReload!)
-                } else {
-                    self.showError("Error", error: error)
-                }
-            }
-        }
-        
+//        let config = PFConfig.currentConfig()
+//        if(config != nil && config["gms_key"] != nil){
+//            self.initVC()
+//        } else {
+//            self.showActivityIndicatory()
+//            PFConfig.getConfigInBackgroundWithBlock{
+//               (config: PFConfig!, error: NSError!) -> Void in
+//               self.hideActivityIndicator()
+//               if(error == nil){
+//                   Util.configure(config)
+//                   self.initVC()
+//               } else {
+//                   self.showError("Error", error: error)
+//               }
+//            }
+//        }
+        self.initVC()
         
         var attr = NSDictionary(object: UIFont(name: "COCOGOOSE", size: 15.0)!, forKey: NSFontAttributeName)
         self.segmentedControl.setTitleTextAttributes(attr as [NSObject : AnyObject], forState: UIControlState.Normal)
@@ -74,14 +73,15 @@ class VendorVC: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate,
         var camera: GMSCameraPosition = GMSCameraPosition(target: target, zoom: 15, bearing: 0, viewingAngle: 0)
         
         
-        
         gmaps = GMSMapView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height))
+
         if (gmaps != nil) {
             gmaps!.myLocationEnabled = true
             gmaps!.camera = camera
             gmaps!.delegate = self
             gmaps!.settings.myLocationButton = true
             gmaps!.settings.zoomGestures = true
+            gmaps!.addSubview(self.buttonReload!)
             
             self.view.addSubview(gmaps!)
             gmaps!.hidden = true;
