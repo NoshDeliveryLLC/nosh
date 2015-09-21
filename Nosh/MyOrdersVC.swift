@@ -15,8 +15,9 @@ class MyOrdersVC: PFQueryTableViewController{
     
     var deliveryOrders = false
     var activeJobs = false
+    var selectedRow: Int = 0
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.pullToRefreshEnabled = true
         self.paginationEnabled = true
@@ -54,14 +55,16 @@ class MyOrdersVC: PFQueryTableViewController{
             let hitPoint = button.convertPoint(CGPointZero, toView: self.tableView)
             let hitIndex = self.tableView.indexPathForRowAtPoint(hitPoint)
             if(hitIndex != nil){
-                var order = self.objects[hitIndex!.row] as! PFObject
+                let order = self.objects[(hitIndex?.row)!] as! PFObject
+//                var order = self.objects[hitIndex!.row] as! PFObject
                 let svc = segue.destinationViewController as! ChangeStatusVC
                 svc.order = order
             }
         } else if (segue.identifier == "goto_order_summary") {
-            let row = tableView.indexPathForSelectedRow()!.row
+            //let row = tableView.indexPathForSelectedRow!.row
             let svc = segue.destinationViewController as! OrderSummaryVC
-            var order = self.objects[row] as! PFObject
+            let order = self.objects[selectedRow] as! PFObject
+//            Singleton.sharedInstance().orderForSummary = order
             NSLog(order.objectId)
             svc.order = order
         }
@@ -194,8 +197,11 @@ class MyOrdersVC: PFQueryTableViewController{
                     let push = PFPush()
                     push.setQuery(pushQuery) // Set our Installation query
                     push.setMessage("Your order is now in delivery")
-                    push.sendPush(NSErrorPointer())
-            
+                    push.sendPushInBackgroundWithBlock({ (result, error) -> Void in
+                        if error == nil {
+                            NSLog("Push 'order accepted' sent")
+                        }
+                    })
                     self.tableView.reloadData()
                 } else {
                     self.showError("Failed!", error: error)
@@ -203,6 +209,10 @@ class MyOrdersVC: PFQueryTableViewController{
             })
         }
     self.viewDidLoad()
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedRow = indexPath.row
     }
     
 }

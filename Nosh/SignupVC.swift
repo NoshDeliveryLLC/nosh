@@ -66,15 +66,15 @@ class SignupVC: UIViewController {
     }
     
     @IBAction func signupTapped(sender : UIButton) {
-        var name = txtName.text as String
-        var username = txtUsername.text as String
-        var phone = txtPhone.text as String
-        var password = txtPassword.text as String
-        var confirm_password = txtConfirmPassword.text as String
+        var name = txtName.text as String?
+        var username = txtUsername.text as String?
+        var phone = txtPhone.text as String?
+        var password = txtPassword.text as String?
+        var confirm_password = txtConfirmPassword.text as String?
         
-        if ( name.isEmpty || username.isEmpty || password.isEmpty || phone.isEmpty){
+        if ( name!.isEmpty || username!.isEmpty || password!.isEmpty || phone!.isEmpty){
             self.showError("Sign Up Failed!", message: "Please enter Name, Email, Phone and Password")
-        } else if ( !password.isEqual(confirm_password) ) {
+        } else if ( !password!.isEqual(confirm_password) ) {
             self.showError("Sign Up Failed!", message: "Passwords doesn't Match")
         } else {
             
@@ -106,7 +106,7 @@ class SignupVC: UIViewController {
         }
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
     }

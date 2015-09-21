@@ -18,18 +18,18 @@ class SummaryWaitViewController: UIViewController {
     var vendorItems: [PFObject]!
 
     @IBAction func withdrawDeliveryButton(sender: UIButton) {
-        order.deleteInBackgroundWithBlock({
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                NSLog("", "Order withdraw made")
-                // The object has been saved.
-                self.performSegueWithIdentifier("goto_map", sender: self)
-            } else {
+//        order.deleteInBackgroundWithBlock({
+//            (success: Bool, error: NSError?) -> Void in
+ //           if (success) {
+//                NSLog("", "Order withdraw made")
+//                // The object has been saved.
+//                self.performSegueWithIdentifier("goto_order", sender: self)
+//            } else {
                 // There was a problem, check error.description
-                self.showError("Order withdrawing error", error: error!)
-            }
-        })
-        self.performSegueWithIdentifier("goto_map", sender: self)
+//                self.showError("Order withdrawing error", error: error!)
+//            }
+//        })
+//        self.performSegueWithIdentifier("goto_order", sender: self)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -99,13 +99,13 @@ class SummaryWaitViewController: UIViewController {
         query.getObjectInBackgroundWithId(self.order.objectId) {
             (newOrder: PFObject?, error: NSError?) -> Void in
             if error == nil && newOrder != nil {
-                var orderStatus = newOrder?.objectForKey("status") as! PFObject
+                let orderStatus = newOrder?.objectForKey("status") as! PFObject
                 NSLog("%@", orderStatus)
                 if orderStatus.objectId == Constant.OrderStatus.IN_DELIVERY {
                     self.performSegueWithIdentifier("goto_success", sender: self)
                 }
             } else {
-                println(error)
+                print(error)
             }
         }
         for var i = 1; i<48; i++ {
@@ -114,13 +114,13 @@ class SummaryWaitViewController: UIViewController {
             query.getObjectInBackgroundWithId(self.order.objectId) {
                 (newOrder: PFObject?, error: NSError?) -> Void in
                 if error == nil && newOrder != nil {
-                    var orderStatus = newOrder?.objectForKey("status") as! PFObject
+                    let orderStatus = newOrder?.objectForKey("status") as! PFObject
                     if orderStatus.objectId == Constant.OrderStatus.IN_DELIVERY {
                         NSLog("%@", orderStatus)
                         self.performSegueWithIdentifier("goto_success", sender: self)
                     }
                 } else {
-                    println(error)
+                    print(error)
                 }
             }
             sleep(5)
@@ -132,28 +132,28 @@ class SummaryWaitViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "goto_success") {
             let navigationController = segue.destinationViewController as! UINavigationController
-            var svc = navigationController.topViewController as! SummaryDelivererFoundViewController
+            let svc = navigationController.topViewController as! SummaryDelivererFoundViewController
             svc.order = self.order
             svc.card = self.card
             svc.vendorItems = self.vendorItems
         } else if (segue.identifier == "goto_fail") {
             let navigationController = segue.destinationViewController as! UINavigationController
-            var svc = navigationController.topViewController as! SummaryWithdrawViewController
+            let svc = navigationController.topViewController as! SummaryWithdrawViewController
             svc.order = self.order
         }
-//        else if (segue.identifier == "goto_map") {
-//            order.deleteInBackgroundWithBlock({
-//                (success: Bool, error: NSError?) -> Void in
-//                if (success) {
-//                    NSLog("", "Order withdraw made")
-//                    // The object has been saved.
-//                    self.performSegueWithIdentifier("goto_map", sender: self)
-//                } else {
-//                    // There was a problem, check error.description
-//                    self.showError("Order withdrawing error", error: error!)
-//                }
-//            })
-//        }
+        else if (segue.identifier == "goto_order") {
+            order.deleteInBackgroundWithBlock({
+                (success: Bool, error: NSError?) -> Void in
+                if (success) {
+                    NSLog("", "Order withdraw made")
+                    // The object has been saved.
+                    //self.performSegueWithIdentifier("goto_map", sender: self)
+               } else {
+                    // There was a problem, check error.description
+                    //self.showError("Order withdrawing error", error: error!)
+               }
+            })
+        }
     }
 
     /*

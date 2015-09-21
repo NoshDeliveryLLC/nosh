@@ -48,7 +48,7 @@ class LoginVC: UIViewController {
         var alert = UIAlertController(title: "FORGOT PASSWORD", message: "Enter your email to reset password", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
         alert.addAction(UIAlertAction(title: "Reset", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
-            var emailTxt = alert.textFields?.first as! UITextField
+            var emailTxt = alert.textFields!.first as UITextField!
             self.showActivityIndicatory()
             PFUser.requestPasswordResetForEmailInBackground(emailTxt.text, block: { (success:Bool, error:NSError!) -> Void in
                 self.hideActivityIndicator()
@@ -59,7 +59,7 @@ class LoginVC: UIViewController {
                 }
             })
         }))
-        var restButton = alert.actions.last as! UIAlertAction
+        var restButton = alert.actions.last as UIAlertAction!
         restButton.enabled = false
         alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
             textField.placeholder = "Email Address"
@@ -72,10 +72,10 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func loginTapped(sender : UIButton) {
-        var username = txtUsername.text as String
-        var password = txtPassword.text as String
+        var username = txtUsername.text as String?
+        var password = txtPassword.text as String?
         
-        if (username.isEmpty || password.isEmpty ) {
+        if (username!.isEmpty || password!.isEmpty ) {
             self.showError("Login Failed!", message: "Please enter Username and Password")
         } else {
             self.showActivityIndicatory()
@@ -95,8 +95,9 @@ class LoginVC: UIViewController {
         }
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
     }
+
 }

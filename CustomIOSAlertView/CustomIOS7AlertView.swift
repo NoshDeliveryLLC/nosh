@@ -41,7 +41,7 @@ class CustomIOS7AlertView: UIView {
         setObservers()
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setObservers()
     }
@@ -169,11 +169,11 @@ class CustomIOS7AlertView: UIView {
         view.layer.cornerRadius = cornerRadius
         
         view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor(red: 198/255, green: 198/255, blue: 198/255, alpha:1).CGColor!
+        view.layer.borderColor = UIColor(red: 198/255, green: 198/255, blue: 198/255, alpha:1).CGColor
         
         view.layer.shadowRadius = cornerRadius + 5
         view.layer.shadowOpacity = 0.1
-        view.layer.shadowColor = UIColor.blackColor().CGColor!
+        view.layer.shadowColor = UIColor.blackColor().CGColor
         view.layer.shadowOffset = CGSizeMake(0 - (cornerRadius + 5) / 2, 0 - (cornerRadius + 5) / 2)
         view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: view.layer.cornerRadius).CGPath
         
@@ -218,9 +218,9 @@ class CustomIOS7AlertView: UIView {
         gradient.cornerRadius = cornerRadius
         
         gradient.colors = [
-            UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha:1).CGColor!,
-            UIColor(red: 233/255, green: 233/255, blue: 233/255, alpha:1).CGColor!,
-            UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha:1).CGColor!
+            UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha:1).CGColor,
+            UIColor(red: 233/255, green: 233/255, blue: 233/255, alpha:1).CGColor,
+            UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha:1).CGColor
         ]
         
         return gradient
@@ -235,7 +235,7 @@ class CustomIOS7AlertView: UIView {
         let buttonWidth = container.bounds.size.width / CGFloat(buttonTitles!.count)
         
         for buttonIndex in 0...(buttonTitles!.count - 1) {
-            let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+            let button = UIButton(type: UIButtonType.Custom) as UIButton
             
             button.frame = CGRectMake(
                 CGFloat(buttonIndex) * CGFloat(buttonWidth),
@@ -363,7 +363,7 @@ class CustomIOS7AlertView: UIView {
         let screenSize = self.calculateScreenSize()
         let dialogSize = self.calculateDialogSize()
         
-        var keyboardSize = notification.userInfo![UIKeyboardFrameBeginUserInfoKey]!.CGRectValue().size
+        var keyboardSize = notification.userInfo![UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
         
         if orientationIsLandscape() {
             keyboardSize = CGSize(width: keyboardSize.height, height: keyboardSize.width)

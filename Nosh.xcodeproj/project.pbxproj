@@ -108,8 +108,6 @@
 		4BF3616C1A98FE1300CBDE6C /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BF3616A1A98FE1300CBDE6C /* reveal-icon.png */; };
 		4BF361701A9994BC00CBDE6C /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF3616F1A9994BC00CBDE6C /* MenuVC.swift */; };
 		4BF361751A99C1E200CBDE6C /* VendorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF361741A99C1E200CBDE6C /* VendorTableViewCell.swift */; };
-		4C49AFF41B18B2ED00894361 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C49AFF31B18B2ED00894361 /* GoogleMaps.framework */; };
-		4C49AFF61B18B32C00894361 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4C49AFF51B18B32C00894361 /* GoogleMaps.bundle */; };
 		4C49AFF91B18B3F300894361 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C49AFF71B18B3F300894361 /* Crashlytics.framework */; };
 		4C49AFFA1B18B3F300894361 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C49AFF81B18B3F300894361 /* Fabric.framework */; };
 		4C49AFFC1B18B3FD00894361 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C49AFFB1B18B3FD00894361 /* FacebookSDK.framework */; };
@@ -117,6 +115,8 @@
 		4C79F6981B45FA9900450DAA /* SummaryWaitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C79F6971B45FA9900450DAA /* SummaryWaitViewController.swift */; };
 		4C79F69A1B45FC2500450DAA /* SummaryWithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C79F6991B45FC2500450DAA /* SummaryWithdrawViewController.swift */; };
 		4C79F69C1B45FC5600450DAA /* SummaryDelivererFoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C79F69B1B45FC5600450DAA /* SummaryDelivererFoundViewController.swift */; };
+		4C7E692B1BB05DF300AC8807 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E692A1BB05DF300AC8807 /* Singleton.swift */; settings = {ASSET_TAGS = (); }; };
+		4C7E692F1BB0C33600AC8807 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C7E692E1BB0C33600AC8807 /* GoogleMaps.framework */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -257,8 +257,6 @@
 		4BF3616F1A9994BC00CBDE6C /* MenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		4BF361741A99C1E200CBDE6C /* VendorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorTableViewCell.swift; sourceTree = "<group>"; };
 		4BF361781A99C23600CBDE6C /* VendorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorVC.swift; sourceTree = "<group>"; };
-		4C49AFF31B18B2ED00894361 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
-		4C49AFF51B18B32C00894361 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps1.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		4C49AFF71B18B3F300894361 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		4C49AFF81B18B3F300894361 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		4C49AFFB1B18B3FD00894361 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
@@ -266,6 +264,8 @@
 		4C79F6971B45FA9900450DAA /* SummaryWaitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryWaitViewController.swift; sourceTree = "<group>"; };
 		4C79F6991B45FC2500450DAA /* SummaryWithdrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryWithdrawViewController.swift; sourceTree = "<group>"; };
 		4C79F69B1B45FC5600450DAA /* SummaryDelivererFoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryDelivererFoundViewController.swift; sourceTree = "<group>"; };
+		4C7E692A1BB05DF300AC8807 /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		4C7E692E1BB0C33600AC8807 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,9 +286,9 @@
 				4BA163C61AB2068B004BD950 /* CoreLocation.framework in Frameworks */,
 				4BA163C41AB20683004BD950 /* CoreData.framework in Frameworks */,
 				4BA163C21AB2066C004BD950 /* AVFoundation.framework in Frameworks */,
-				4C49AFF41B18B2ED00894361 /* GoogleMaps.framework in Frameworks */,
 				4B620D5C1A99FDEF0010BF99 /* Accounts.framework in Frameworks */,
 				4B620D5A1A99FDE20010BF99 /* Social.framework in Frameworks */,
+				4C7E692F1BB0C33600AC8807 /* GoogleMaps.framework in Frameworks */,
 				4BD05BD21A6BD85700DB62F4 /* Security.framework in Frameworks */,
 				4BD05BB61A6BBEF300DB62F4 /* libsqlite3.dylib in Frameworks */,
 				4BD05BB41A6BBEE000DB62F4 /* AudioToolbox.framework in Frameworks */,
@@ -328,6 +328,7 @@
 				4B5FBCED1AA4F1F400AEC139 /* Constant.swift */,
 				4B4001C81AB354C000F626DA /* Extension.swift */,
 				4B4EB9601AC9167E00AF9DD6 /* Config.swift */,
+				4C7E692A1BB05DF300AC8807 /* Singleton.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -398,10 +399,9 @@
 		4BD05B671A6BBD6300DB62F4 = {
 			isa = PBXGroup;
 			children = (
+				4C7E692E1BB0C33600AC8807 /* GoogleMaps.framework */,
 				4C49AFF71B18B3F300894361 /* Crashlytics.framework */,
 				4C49AFF81B18B3F300894361 /* Fabric.framework */,
-				4C49AFF51B18B32C00894361 /* GoogleMaps.bundle */,
-				4C49AFF31B18B2ED00894361 /* GoogleMaps.framework */,
 				4B8078C11AD7AC7A0003269A /* CustomIOSAlertView */,
 				4B1B0E681AC0687200CCE122 /* facebook */,
 				4B032C5A1AB9D800000BDBF5 /* Cocogoose.otf */,
@@ -668,7 +668,8 @@
 		4BD05B681A6BBD6300DB62F4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Nosh;
 				TargetAttributes = {
 					4BD05B6F1A6BBD6300DB62F4 = {
@@ -737,7 +738,6 @@
 				4BF3616C1A98FE1300CBDE6C /* reveal-icon.png in Resources */,
 				4BD05B7D1A6BBD6300DB62F4 /* Images.xcassets in Resources */,
 				4BD05C2D1A6BD90000DB62F4 /* jcb.png in Resources */,
-				4C49AFF61B18B32C00894361 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -799,6 +799,7 @@
 				4B5FBCF01AA4FED900AEC139 /* ConfirmedVC.swift in Sources */,
 				4BE7860C1AD28B790028EF0D /* BlueNavigationController.swift in Sources */,
 				4B88ADA71ABC829700FFE256 /* SummaryTableHeadingCell.swift in Sources */,
+				4C7E692B1BB05DF300AC8807 /* Singleton.swift in Sources */,
 				4BD05C1A1A6BD90000DB62F4 /* PTKAddressZip.m in Sources */,
 				4BD05BAA1A6BBE7300DB62F4 /* LoginVC.swift in Sources */,
 				4BF361751A99C1E200CBDE6C /* VendorTableViewCell.swift in Sources */,
@@ -875,9 +876,12 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: John Abeel (97EV859RU5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -892,7 +896,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-objC";
@@ -919,8 +923,10 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: John Abeel (3965AFLGSH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -930,7 +936,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-objC";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
@@ -958,6 +964,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = com.NoshDelivery.NoshDelivery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Nosh/Nosh-Bridging-Header.h";
@@ -983,6 +990,7 @@
 				INFOPLIST_FILE = Nosh/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.NoshDelivery.NoshDelivery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Nosh/Nosh-Bridging-Header.h";
@@ -1004,6 +1012,7 @@
 				);
 				INFOPLIST_FILE = NoshTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nosh.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nosh.app/Nosh";
 			};
@@ -1019,6 +1028,7 @@
 				);
 				INFOPLIST_FILE = NoshTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nosh.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nosh.app/Nosh";
 			};

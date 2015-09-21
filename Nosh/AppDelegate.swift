@@ -23,27 +23,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId(Config.Parse.appId, clientKey:Config.Parse.clientId)
         GMSServices.provideAPIKey("AIzaSyDplreFQyvs_lih-pqcr3vCbi5c9yokv80")
         
-        let config = PFConfig.currentConfig()
-        if(config != nil && config["stripe"] != nil && config["gms_key"] != nil){
-            Util.configure(config)
-            PFConfig.getConfigInBackgroundWithBlock{
-                (config: PFConfig!, error: NSError!) -> Void in
-                if(config != nil){
-                    Util.configure(config, gms: false)
-                }
-            }
-        }
+//        let config = PFConfig.currentConfig()
+//        if(config != nil && config["stripe"] != nil && config["gms_key"] != nil){
+//            Util.configure(config)
+//            PFConfig.getConfigInBackgroundWithBlock{
+//                (config: PFConfig!, error: NSError!) -> Void in
+//                if(config != nil){
+//                    Util.configure(config, gms: false)
+//                }
+//            }
+//        }
         
-        let userNotificationTypes = (UIUserNotificationType.Alert |  UIUserNotificationType.Badge |  UIUserNotificationType.Sound);
-        
-        let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
         
         let query = PFUser.query()
         query.fromLocalDatastore()
         query.fromPinWithName("lastUser")
-        var lastUser: PFUser = PFUser.new()
+        var lastUser: PFUser = PFUser.init()
         var findresult: Bool = false
         query.getFirstObjectInBackgroundWithBlock { (object:PFObject!, error: NSError!) -> Void in
             if error == nil {
@@ -53,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 findresult = true
             } else {
                 // Log details of the failure
-                println("Error: \(error!) \(error!.userInfo!)")
+                print("Error: \(error!) \(error!.userInfo)")
             }}
     
         if (PFUser.currentUser() == nil){

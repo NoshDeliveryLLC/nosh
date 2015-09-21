@@ -19,7 +19,7 @@ class SummaryVC: UITableViewController, PTKViewDelegate{
         super.viewDidLoad()
         paymentView = PTKView(frame: CGRectMake(10, 80, 250, 46))
         paymentView.delegate = self
-        card = STPCard.new()
+        card = STPCard.init()
         self.order["user"] = PFUser.currentUser()
 //        self.order["status"] = Constant.OrderStatus.UNFILLED
         
@@ -30,7 +30,7 @@ class SummaryVC: UITableViewController, PTKViewDelegate{
             if error == nil && status != nil {
                 self.order["status"] = status
             } else {
-                println(error)
+                print(error)
             }
         }
         self.next.title = "Place order"
@@ -138,7 +138,11 @@ class SummaryVC: UITableViewController, PTKViewDelegate{
         let push = PFPush()
         push.setChannel("Deliverer")
         push.setData(data)
-        push.sendPush(NSErrorPointer())
+        push.sendPushInBackgroundWithBlock({ (result, error) -> Void in
+            if error == nil {
+                NSLog("Push 'new job' sent")
+            }
+        })
         
         //Temp func end
         

@@ -7,13 +7,14 @@
 //
 
 import Foundation
-class OrderSummaryVC: UITableViewController, UITableViewDataSource{
+class OrderSummaryVC: UITableViewController{
     
     var order: PFObject!
     var orderItems = [PFObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        order = Singleton.sharedInstance().orderForSummary
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.registerClass(SummaryTableViewCell.self, forCellReuseIdentifier: "SummaryCell")
@@ -27,6 +28,7 @@ class OrderSummaryVC: UITableViewController, UITableViewDataSource{
             self.hideActivityIndicator()
             if error == nil {
                 self.orderItems = objects as! [PFObject]
+                self.tableView.reloadData()
             } else {
                 self.showError("Failed!", error: error)
             }

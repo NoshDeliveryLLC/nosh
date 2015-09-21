@@ -24,7 +24,7 @@ class SummaryDelivererFoundViewController: UIViewController {
             if error == nil && newOrder != nil {
                 deliverer = newOrder?.objectForKey("assignedTo") as! PFObject
             } else {
-                println(error)
+                print(error)
             }
         }
         let delivererPhone = deliverer["phone"] as! String
@@ -99,8 +99,8 @@ class SummaryDelivererFoundViewController: UIViewController {
                     orderItem["count"] = object["count"]
                     orderItem["title"] = object["title"]
                     orderItem["detail"] = object["detail"]
-                    orderItem.save()
                     relation.addObject(orderItem)
+                    orderItem.save()
                 }
                 self.order.saveInBackgroundWithBlock({
                     (succeeded: Bool, error: NSError!) -> Void in

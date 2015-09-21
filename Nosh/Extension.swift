@@ -14,7 +14,8 @@ extension UIColor {
         var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet() as NSCharacterSet).uppercaseString
         
         if (cString.hasPrefix("#")) {
-            cString = cString.substringFromIndex(advance(cString.startIndex, 1))
+            let startIndex = cString.startIndex.advancedBy(1)
+            cString = cString.substringFromIndex(startIndex)
         }
         
         var rgbValue:UInt32 = 0
@@ -70,7 +71,7 @@ extension UIViewController {
         if(error.code == kPFErrorConnectionFailed) {
             self.showError(title, message: "The internet connection appears to be offline")
         } else {
-            let errorString = error.userInfo?["error"] as? String
+            var errorString = error.userInfo["error"] as? String
             if(errorString != nil){
                 self.showError(title, message: errorString!)
             } else {

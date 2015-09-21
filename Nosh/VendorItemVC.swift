@@ -13,7 +13,7 @@ class VendorItemVC: PFQueryTableViewController{
     
     var vendor: PFObject!
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.pullToRefreshEnabled = false
         self.paginationEnabled = true

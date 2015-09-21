@@ -13,7 +13,7 @@ class ChangeStatusVC: PFQueryTableViewController{
     
     var order: PFObject!
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.textKey = "name"
         self.pullToRefreshEnabled = false

@@ -141,7 +141,7 @@ class VendorVC: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate,
             if(self.selectedIndex != nil){
                 svc.vendor = self.objects[self.selectedIndex!] as PFObject
             } else {
-                let row = self.tableView.indexPathForSelectedRow()!.row
+                let row = self.tableView.indexPathForSelectedRow!.row
                 svc.vendor = self.objects[row] as PFObject
             }
         }
@@ -255,23 +255,24 @@ class VendorVC: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate,
  //           alertLocationFailed()
         }
     }
-
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //locationManager.stopUpdatingLocation()
         if(locations.count > 0){
             let location = locations[0] as! CLLocation
             currLocation = location.coordinate
             
-//            moveCameraTo(location.coordinate)
+            //            moveCameraTo(location.coordinate)
         }
         if Util.isDelivererMode() {
-            var userLocation = PFGeoPoint.new()
-            userLocation.latitude = locationManager.location.coordinate.latitude
-            userLocation.longitude = locationManager.location.coordinate.longitude
+            var userLocation = PFGeoPoint.init()
+            userLocation.latitude = locationManager.location!.coordinate.latitude
+            userLocation.longitude = locationManager.location!.coordinate.longitude
             PFUser.currentUser().setValue(userLocation, forKey: "location")
         }
         //queryForTable()
     }
+
 
     func moveCameraTo(location: CLLocationCoordinate2D){
         var target: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
